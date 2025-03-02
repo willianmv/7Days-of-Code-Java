@@ -7,7 +7,7 @@ import java.util.List;
 
 public class HTMLGenerator {
 
-    private PrintWriter printWriter;
+    private final PrintWriter printWriter;
 
     public HTMLGenerator(PrintWriter printWriter) {
         this.printWriter = printWriter;
@@ -37,8 +37,8 @@ public class HTMLGenerator {
                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
                <style>
                    body {
-                       background-color: #121212; /* Fundo escuro */
-                       color: #E0E0E0; /* Texto claro */
+                       background-color: #121212;
+                       color: #E0E0E0;
                        font-family: 'Arial', sans-serif;
                    }
             
@@ -50,20 +50,20 @@ public class HTMLGenerator {
                    .card {
                        width: 18rem;
                        height: 30rem;
-                       margin-bottom: 30px; /* Aumentando o espaço entre os cards */
+                       margin-bottom: 30px;
                        display: flex;
                        flex-direction: column;
-                       border: 1px solid #333333; /* Borda mais suave */
-                       border-radius: 10px; /* Bordas arredondadas */
-                       background-color: #1E1E1E; /* Fundo escuro para os cards */
-                       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Sombra suave */
+                       border: 1px solid #333333;
+                       border-radius: 10px;
+                       background-color: #1E1E1E;
+                       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
                    }
 
                    .card-img-top {
                        width: 100%;
                        height: 200px;
                        object-fit: cover;
-                       border-top-left-radius: 10px; /* Arredondando o topo da imagem */
+                       border-top-left-radius: 10px;
                        border-top-right-radius: 10px;
                    }
 
@@ -73,21 +73,21 @@ public class HTMLGenerator {
                    }
 
                    .card-title {
-                       color: #FFD700; /* Título dourado */
+                       color: #FFD700;
                        font-size: 1.25rem;
                    }
 
                    .card-text {
-                       color: #B0B0B0; /* Texto de detalhes em um tom mais suave */
+                       color: #B0B0B0;
                    }
 
                    .btn-primary {
-                       background-color: #6200EE; /* Cor de fundo para o botão */
-                       border-color: #6200EE; /* Cor da borda do botão */
+                       background-color: #6200EE;
+                       border-color: #6200EE;
                    }
 
                    .btn-primary:hover {
-                       background-color: #3700B3; /* Efeito hover no botão */
+                       background-color: #3700B3;
                        border-color: #3700B3;
                    }
 
@@ -99,8 +99,8 @@ public class HTMLGenerator {
                    .row {
                        display: flex;
                        flex-wrap: wrap;
-                       gap: 30px; /* Espaço entre os cards */
-                       justify-content: center; /* Alinhar os cards ao centro */
+                       gap: 30px;
+                       justify-content: center;
                    }
                </style>
             </head>
@@ -117,17 +117,17 @@ public class HTMLGenerator {
     }
 
     private void writeMovieCard(Production p){
-            printWriter.println("<div class='col-md-4 mb-4'>");
-            printWriter.println("<div class='card'>");
-            printWriter.println("<img src='" + p.getPoster() + "' class='card-img-top' alt='" + p.getTitle() + " Poster'>");
-            printWriter.println("<div class='card-body'>");
-            printWriter.println("<h5 class='card-title'>" + p.getTitle() + "</h5>");
-            printWriter.println("<p class='card-text'>Ano: " + p.getYear() + "</p>");
-            printWriter.println("<p class='card-text'>Tipo: " + p.getType() + "</p>");
-            printWriter.println("<a href='https://www.imdb.com/title/" + p.getImdbID() + "' class='btn btn-primary' target='_blank'>Ver no IMDb</a>");
-            printWriter.println("</div>");
-            printWriter.println("</div>");
-            printWriter.println("</div>");
+        printWriter.println("<div class='col-md-4 mb-4'>");
+        printWriter.println("<div class='card'>");
+        printWriter.println("<img src='" + p.poster() + "' class='card-img-top' alt='" + p.title() + " Poster'>");
+        printWriter.println("<div class='card-body'>");
+        printWriter.println("<h5 class='card-title'>" + p.title() + "</h5>");
+        printWriter.println("<p class='card-text'>Ano: " + p.year() + "</p>");
+        printWriter.println("<p class='card-text'>Tipo: " + p.type() + "</p>");
+        printWriter.println("<a href='https://www.imdb.com/title/" + p.imdbID() + "' class='btn btn-primary' target='_blank'>Ver no IMDb</a>");
+        printWriter.println("</div>");
+        printWriter.println("</div>");
+        printWriter.println("</div>");
     }
 
     private String generateHTMLBodyEnd(){
@@ -137,4 +137,5 @@ public class HTMLGenerator {
             </body>
             """;
     }
+
 }

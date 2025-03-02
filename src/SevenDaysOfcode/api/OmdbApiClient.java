@@ -7,12 +7,17 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 
-public class OmdbRequest {
+public class OmdbApiClient {
 
-    public static String findMoviesOrSeries(String pesquisa, String tipo){
-        String apiKey = "<Insira aqui a sua chave da OMDB API>";
+    private final String apiKey;
+
+    public OmdbApiClient(String apiKey) {
+        this.apiKey = apiKey;
+    }
+
+    public String findMoviesOrSeries(String pesquisa, String tipo){
         String pesquisaCodificada = URLEncoder.encode(pesquisa, StandardCharsets.UTF_8);
-        String url = "http://www.omdbapi.com/?s="+ pesquisaCodificada +"&type="+ tipo +"&apikey=" + apiKey +"&page=1";
+        String url = "http://www.omdbapi.com/?s="+ pesquisaCodificada +"&type="+ tipo +"&apikey=" + this.apiKey +"&page=1";
 
         try (HttpClient client = HttpClient.newHttpClient()) {
 

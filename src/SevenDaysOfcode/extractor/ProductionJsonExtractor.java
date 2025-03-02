@@ -5,7 +5,7 @@ import SevenDaysOfcode.entity.Production;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductionExtractor {
+public class ProductionJsonExtractor {
 
     private Production production;
     private final List<Production> productions = new ArrayList<>();
@@ -17,6 +17,7 @@ public class ProductionExtractor {
             System.out.println("-------------------------------------------------------------------------------------------------------------------------------------\n");
             return new ArrayList<>();
         }
+
         String searchSection = getJsonSection(json, "\"Search\":", "]");
         String[]organizedJson = searchSection.split("\\},\\{");
 
